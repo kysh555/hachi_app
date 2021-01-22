@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Hachi App</title>
+  </head>
+
+  <body>
+
+    <h1>top page </h1>
+
+    <header>
+      <div class="header-bar">
+        <% if user_signed_in? %>
+          <%= link_to "sign_out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "sign up", new_user_registration_path %><br>
+          <%= link_to "sign in", new_user_session_path %>
+        <% end %>
+      </div>
+    </header>
+
+    <footer>
+    </footer>
+  </body>
+
+</html>
