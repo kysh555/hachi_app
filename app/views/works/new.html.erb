@@ -1,7 +1,7 @@
 <h1>新規投稿</h1>
 
 <%= form_with model: @work,local: true do |f| %>
-  <%= f.file_field :images, name: 'work[:images][]' %><br>
+  <%= f.file_field :images, multiple: true %><br>
 
   <%= f.text_field :title, placeholder: 'enter a title' %><br>
 
