@@ -16,6 +16,10 @@ class WorksController < ApplicationController
       render action: :index
     end
   end
+
+  def show
+    @work = Work.find(params[:id])
+  end
   
   private
   def work_params

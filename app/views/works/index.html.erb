@@ -28,7 +28,7 @@
       <% @works.each do |work| %>
         <li>
           <div class="work-image">
-            <%= image_tag work.images[0], height:"250px" %>
+            <%= link_to image_tag(work.images[0], height:"250px"), work_path(work.id) %>
           </div>
           <div class="work-info">
             <h4 class="work-title">
