@@ -20,6 +20,29 @@
       </div>
     </header>
 
+    <div class="works">
+      <h2>
+        作品一覧
+      </h2>
+      <ul class="work-lists">
+      <% @works.each do |work| %>
+        <li>
+          <div class="work-image">
+            <%= image_tag work.images[0], height:"250px" %>
+          </div>
+          <div class="work-info">
+            <h4 class="work-title">
+              <%= work.title %>
+            </h4>
+            <h5 class="work-description">
+              <%= work.description %>
+            </h5>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+
     <footer>
     </footer>
   </body>
