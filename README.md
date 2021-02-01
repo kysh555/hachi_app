@@ -10,11 +10,11 @@
 
 
 ## worksテーブル
-| Column      | Type   | Options                            |
-| ----------- | ------ | ---------------------------------- |
-| title        | string | null: false                        |
-| description | string | null: false                        |
-| user_id     | references | null: false, foreign_key: true |
+| Column      | Type       | Options                            |
+| ----------- | ---------- | ---------------------------------- |
+| title       | string     | null: false                        |
+| description | text       | null: false                        |
+| user_id     | references | null: false, foreign_key: true     |
 
 ### association
 - belongs_to :user
@@ -25,9 +25,9 @@
 
 
 ## tagsテーブル
-| Column | Type | Options |
-| ------- | ------ | ------ |
-| name | string | null: false |
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
 
 ### association
 - has_many :work_tags
@@ -36,8 +36,8 @@
 
 
 ## work_tagsテーブル
-| Column | Type | Options |
-| ------- | ----- | ----- |
+| Column  | Type       | Options     |
+| ------- | ---------- | ----------- |
 | work_id | references | null: false |
 | tag_id  | references | null: false |
 

@@ -12,12 +12,36 @@
       <div class="header-bar">
         <% if user_signed_in? %>
           <%= link_to "sign_out", destroy_user_session_path, method: :delete %>
+          <%= link_to "新規投稿", new_work_path %>
         <% else %>
           <%= link_to "sign up", new_user_registration_path %><br>
           <%= link_to "sign in", new_user_session_path %>
         <% end %>
       </div>
     </header>
+
+    <div class="works">
+      <h2>
+        作品一覧
+      </h2>
+      <ul class="work-lists">
+      <% @works.each do |work| %>
+        <li>
+          <div class="work-image">
+            <%= image_tag work.images[0], height:"250px" %>
+          </div>
+          <div class="work-info">
+            <h4 class="work-title">
+              <%= work.title %>
+            </h4>
+            <h5 class="work-description">
+              <%= work.description %>
+            </h5>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
 
     <footer>
     </footer>
