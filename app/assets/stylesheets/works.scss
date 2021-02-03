@@ -16,10 +16,41 @@ li {
   margin: 10px 0 0 10px;
 }
 
-.work-title {
-  margin: 5px 0 0 15px ;
+.work-image {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.work-description {
-  margin: 5px 0 0 15px;
+.work-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.comment-field {
+  width: 600px;
+}
+
+.show-comments {
+  width: 600px;
+  margin: 50px auto 0;
+}
+
+.comment-list {
+  margin-bottom: 20px;
+}
+
+.text-form {
+  width: 400px;
+  height: 60px;
+  padding: 10px;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+.send {
+  width: 80px;
+  padding: 5px;
+  margin: 0 auto 10px;
+  display: block;
 }
