@@ -20,4 +20,10 @@
   </div>
 </div>
 
+<div class="comment-form">
+  <%= form_with model: @comment, local: true do |f| %>
+    <%= f.text_area :comment, placeholder: 'コメントする' %>
+  <% end %>
+</div>
+
 <%= link_to "戻る", root_path %>
