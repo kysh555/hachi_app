@@ -3,7 +3,9 @@
 <div class="work-field">
   <div class="work-image">
     <% @work.images.each do |work| %>
-      <%=image_tag work, height:"400px" %>
+      <li>
+        <%=image_tag work, height:"400px" %>
+      </li>
     <% end %>
   </div>
   <div class="work-info">
@@ -17,6 +19,31 @@
         <%= @work.description %>
       </h4>
     </div>
+  </div>
+</div>
+
+<div comment-field>
+  <div class="show-comments">
+    <h4>
+      コメント一覧
+    </h4>
+    <div class="comment-lists">
+      <% @comments.each do |comment| %>
+        <li class="comment-list">
+          <div><%= comment.text %></div>
+          <div><%= comment.user.nickname %></div>
+        </li>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="comment-form">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@work, @comment], local: true) do |f| %>
+        <%= f.text_area :text, placeholder: 'コメントする', class:"text-form" %>
+        <%= f.submit 'send', class:"send" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
