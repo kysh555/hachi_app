@@ -31,6 +31,11 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @work.update(work_params)
   end
+
+  def destroy
+    @work = Work.find(params[:id])
+    @work.destroy
+  end
   
   private
   def work_params
