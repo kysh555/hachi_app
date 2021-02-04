@@ -22,6 +22,15 @@ class WorksController < ApplicationController
     @comment = Comment.new
     @comments = @work.comments.includes(:user)
   end
+
+  def edit
+    @work = Work.find(params[:id])
+  end
+
+  def update
+    @work = Work.find(params[:id])
+    @work.update(work_params)
+  end
   
   private
   def work_params
