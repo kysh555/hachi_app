@@ -1,8 +1,9 @@
 <h1>作品詳細ページ</h1>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && @work.user == current_user %>
   <div class="edit-btn">
     <%= link_to '編集する', edit_work_path(@work.id) %>
+    <%= link_to '削除する', work_path(@work.id), method: :delete %>
   </div>
 <% end %>
 
