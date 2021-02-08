@@ -26,6 +26,11 @@
         <%= @work.description %>
       </h4>
     </div>
+    <div class="who-posted">
+      <h3>
+      by <%= link_to @nickname, user_path(@work.user) %>
+      </h3>
+    </div>
   </div>
 </div>
 

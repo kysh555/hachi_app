@@ -19,6 +19,7 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @nickname = @work.user.nickname
     @comment = Comment.new
     @comments = @work.comments.includes(:user)
   end
