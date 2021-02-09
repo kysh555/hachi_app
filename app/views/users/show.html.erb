@@ -1,0 +1,21 @@
+<h1>ユーザーページ</h1>
+
+<div>
+  <div>
+    <%= "#{@nickname}さんの投稿一覧"%>
+  </div>
+
+  <div>
+    <% @works.each do |work| %>
+      <% if work.images != 1 %>
+        <% work.images.each do |w| %>
+          <%= link_to image_tag(w, height:"250px"), work_path(w.record_id) %>
+        <% end %>
+      <% else %>
+          <%= link_to image_tag(work.images, height:"250px"), work_path(work.id) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to '戻る', root_path %>
