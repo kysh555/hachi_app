@@ -1,7 +1,5 @@
-<h1>作品詳細ページ</h1>
-
 <% if user_signed_in? && @work.user == current_user %>
-  <div class="edit-btn">
+  <div class="work_btn">
     <%= link_to '編集する', edit_work_path(@work.id) %>
     <%= link_to '削除する', work_path(@work.id), method: :delete %>
   </div>
@@ -10,53 +8,49 @@
 <div class="work-field">
   <div class="work-image">
     <% @work.images.each do |work| %>
-      <li>
+      <li class="show_work_image">
         <%=image_tag work, height:"400px" %>
       </li>
     <% end %>
   </div>
   <div class="work-info">
     <div class="work-title">
-      <h3>
-        <%= @work.title %>
-      </h3>
+      <%= @work.title %>
     </div>
     <div class="work-description">
-      <h4>
-        <%= @work.description %>
-      </h4>
+      <%= @work.description %>
     </div>
     <div class="who-posted">
-      <h3>
-      by <%= link_to @nickname, user_path(@work.user) %>
-      </h3>
+    by <%= link_to @nickname, user_path(@work.user), class:"user_name" %>
     </div>
   </div>
 </div>
 
-<div comment-field>
-  <div class="show-comments">
-    <h4>
-      コメント一覧
-    </h4>
-    <div class="comment-lists">
+<div class="comment-field">
+  <div class="show-comment">
+    コメント一覧
+  </div>
+  <div class="comment-lists">
+    <% if @comments.length >= 1 %>
       <% @comments.each do |comment| %>
         <li class="comment-list">
-          <div><%= comment.text %></div>
-          <div><%= comment.user.nickname %></div>
+          <div><%= link_to comment.user.nickname, user_path(comment.user), class: "comment_user_name" %></div>
+          <div class="comment_text"><%= comment.text %></div>
         </li>
       <% end %>
-    </div>
+    <% else %>
+      <div class="no_comment_message">まだコメントがありません</div>
+    <% end %>
   </div>
 
   <div class="comment-form">
     <% if user_signed_in? %>
       <%= form_with(model: [@work, @comment], local: true) do |f| %>
-        <%= f.text_area :text, placeholder: 'コメントする', class:"text-form" %>
+        <%= f.text_area :text, placeholder: "write a comment", class:"text-form" %>
         <%= f.submit 'send', class:"send" %>
       <% end %>
     <% end %>
   </div>
 </div>
 
-<%= link_to "戻る", root_path %>
+<%= link_to "←トップへ戻る", root_path, class: "return_to_index" %>

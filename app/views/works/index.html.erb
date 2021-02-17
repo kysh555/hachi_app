@@ -1,44 +1,30 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Hachi App</title>
-  </head>
-
-  <body>
-
-    <h1>top page </h1>
-
-    <div class="works">
-      <h2>
-        作品一覧
-      </h2>
-      <div>
-        <%= form_with(url: search_works_path, local: true, method: :get, class: "search_form") do |f| %>
-          <%= f.text_field :keyword, placeholder: 'キーワード検索', class: "search_input" %>
-          <%= f.submit '検索', class: "search_btn" %>
-        <% end %>
-      </div>
-      <ul class="work-lists">
+<div class="works">
+  <div class="work_table">
+    作品一覧
+  </div>
+  <div class="search_form">
+    <%= form_with(url: search_works_path, local: true, method: :get) do |f| %>
+      <%= f.text_field :keyword, placeholder: 'キーワード検索', class: "search_input" %>
+      <%= f.submit '検索', class: "search_btn" %>
+    <% end %>
+  </div>
+  <div class="work_lists_field">
+    <ul class="work_lists">
       <% @works.each do |work| %>
-        <li>
+        <li class="work_list">
           <div class="work-image">
             <%= link_to image_tag(work.images[0], height:"250px"), work_path(work.id) %>
           </div>
           <div class="work-info">
-            <h4 class="work-title">
-              <%= work.title %>
-            </h4>
-            <h5 class="work-description">
-              <%= work.description %>
-            </h5>
+            <div class="work-title">
+              <span class="work_title_font"><%= work.title %></span>
+            </div>
+            <div class="work-description">
+              <span class="work_description_font"><%= work.description %></span>
+            </div>
           </div>
         </li>
       <% end %>
-      </ul>
-    </div>
-
-    <footer>
-    </footer>
-  </body>
-
-</html>
+    </ul>
+  </div>
+</div>

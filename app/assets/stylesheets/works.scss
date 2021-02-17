@@ -2,22 +2,82 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.edit-btn {
-  text-align: center;
+body {
+  width: 100%;
 }
 
-.works {
-  margin-top: 20px;
+// ヘッダー部分
+.hachiapp {
+  text-decoration: none;
+  color: #696969;
 }
 
-.work-lists {
+.header_bar {
+  background-color: #E6E6FA;
+  height: 50px;
   display: flex;
+  align-items: center;
+}
+
+.header_title {
+  margin-left: 30px;
+}
+
+.header_menu {
+  margin-left: 80px;
+}
+
+.menu_lists {
+  display: flex;
+}
+
+.menu_list {
+  width: 30%;
+  margin: 15px;
+  text-decoration: none;
+  font-size: 15px;
+}
+// ヘッダー部分
+
+
+
+// トップページ
+.works {
+  margin-top: 30px;
+}
+
+.work_table {
+  text-align: center;
+  color: #555;
+}
+
+.search_form {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.search_input {
+  padding: 5px;
+}
+
+.search_btn {
+  color: #555;
+}
+
+.work_lists_field {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.work_lists {
+  display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
-li {
-  list-style: none;
-  margin: 10px 0 0 10px;
+.work_list {
+  width: 30%;
+  margin-bottom: 60px;
 }
 
 .work-image {
@@ -27,21 +87,78 @@ li {
 }
 
 .work-info {
-  margin-top: 20px;
+  margin-top: 15px;
   text-align: center;
 }
 
-.comment-field {
-  width: 600px;
+.work-title {
+  margin-bottom: 5px;
 }
 
-.show-comments {
+.work_title_font {
+  font-size: 15px;
+}
+
+.work_description_font {
+  font-size: 13px;
+}
+// トップページ
+
+
+// 作品詳細ページ
+.work_btn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.show_work_image {
+  margin: 30px 15px 0 0;
+}
+
+.work-description {
+  margin-bottom: 10px; 
+}
+
+.who-posted {
+  margin-bottom: 10px;
+}
+.user_name {
+  text-decoration: none;
+}
+
+// コメント関連
+.comment-field {
   width: 600px;
-  margin: 50px auto 0;
+  margin: 30px auto 0;
+}
+
+.show-comment {
+  border-top: 1px solid #DCDCDC;
+  margin: 20px 0;
+  padding: 30px 0 0 30px;
 }
 
 .comment-list {
+  width: 100%;
+  // display: flex;
+  // justify-content: space-between;
   margin-bottom: 20px;
+  padding: 0 30px;
+  word-break: normal;
+}
+
+.comment_user_name {
+  text-decoration: none;
+}
+
+.no_comment_message {
+  text-align: center;
+  font-size: 12px;
+  color: #696969;
+}
+
+.comment-form {
+  margin: 40px 0 0 10px;
 }
 
 .text-form {
@@ -57,4 +174,33 @@ li {
   padding: 5px;
   margin: 0 auto 10px;
   display: block;
+  color: #696969;
+}
+// コメント関連
+// 作品詳細ページ
+
+
+.return_to_index {
+  font-size: 13px;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+// フッター
+footer {
+  background-color: #E6E6FA;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#footer {
+  height: 20px;
+  padding: 10px;
+  color: #696969;
+}
+// フッター
+
+// 作品一覧表示の際のリストの点を消す
+li {
+  list-style: none;
 }
