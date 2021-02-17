@@ -9,4 +9,12 @@ class Work < ApplicationRecord
     validates :images
   end
 
+  def self.search(keyword)
+    if keyword != ""
+      Work.where('title LIKE?', "%#{keyword}%").where('description LIKE?', "%#{keyword}%")
+    else
+      Work.all
+    end
+  end
+
 end
