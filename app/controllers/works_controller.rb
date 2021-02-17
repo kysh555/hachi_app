@@ -37,7 +37,11 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @work.destroy
   end
-  
+
+  def search
+    @works = Work.search(params[:keyword])
+  end
+
   private
   def work_params
     params.require(:work).permit(:title, :description, images: []).merge(user_id: current_user.id)
