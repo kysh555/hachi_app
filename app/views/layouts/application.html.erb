@@ -10,22 +10,33 @@
   </head>
 
 <header>
-  <div class="header-bar">
-    <div class="header-title">
-      Hachi App
+  <div class="header_bar">
+    <div class="header_title">
+      <%= link_to 'Hachi App', root_path, class: "hachiapp" %>
     </div>
-    <% if user_signed_in? %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to "sign_out", destroy_user_session_path, method: :delete %>
-      <%= link_to "新規投稿", new_work_path %>
-    <% else %>
-      <%= link_to "sign up", new_user_registration_path %><br>
-      <%= link_to "sign in", new_user_session_path %>
-    <% end %>
+    <div class="header_menu">
+      <ul class="menu_lists">
+        <% if user_signed_in? %>
+          <li><%= link_to "my page", user_path(current_user.id), class: "menu_list" %></li><span>|</span>
+          <li><%= link_to "sign out", destroy_user_session_path, method: :delete, class: "menu_list" %></li><span>|</span>
+          <li><%= link_to "new post", new_work_path, class:"menu_list" %></li>
+        <% else %>
+          <li><%= link_to "sign up", new_user_registration_path, class:"menu_list" %><br></li><span>|</span>
+          <li><%= link_to "sign in", new_user_session_path, class:"menu_list" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </header>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <%= yield %>
+</body>
+
+<footer>
+  <p id="footer">
+    footer
+  </p>
+</footer>
+  
 </html>

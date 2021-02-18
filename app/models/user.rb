@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true, length: { minimum: 2, maximum: 8 }
 
-  has_many :works
+  has_many :works, dependent: :destroy
   has_many :comments
 end

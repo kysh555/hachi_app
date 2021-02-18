@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @works = Work.all.order("created_at DESC")
@@ -34,8 +36,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find(params[:id])
-    @work.destroy
+    work = Work.find(params[:id])
+    work.destroy
   end
 
   def search
@@ -45,5 +47,15 @@ class WorksController < ApplicationController
   private
   def work_params
     params.require(:work).permit(:title, :description, images: []).merge(user_id: current_user.id)
+  end
+
+  def find_work
+    @work = Work.find(params[:id])
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 end

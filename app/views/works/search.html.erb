@@ -1,20 +1,6 @@
-<h2>
+<div class="action-result">
   検索結果
-</h2>
-<ul class="work-lists">
-  <% @works.each do |work| %>
-    <li>
-    <div class="work-image">
-      <%= link_to image_tag(work.images[0], height:"250px"), work_path(work.id) %>
-    </div>
-    <div class="work-info">
-      <h4 class="work-title">
-        <%= work.title %>
-      </h4>
-      <h5 class="work-description">
-        <%= work.description %>
-      </h5>
-    </div>
-    </li>
-  <% end %>
-</ul>
+</div>
+<%= render partial: "list", locals: {works: @works} %>
+
+<%= link_to '← トップへ戻る', root_path, class: "return_to" %>
