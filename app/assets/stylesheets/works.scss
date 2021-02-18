@@ -292,6 +292,19 @@ dt {
   text-decoration: none;
 }
 
+
+// エラー文
+
+.error-alert {
+  margin-bottom: 20px;
+}
+.error-message {
+  color: #333;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+// エラー文
+
 // フッター
 footer {
   background-color: #E6E6FA;
