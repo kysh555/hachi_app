@@ -36,7 +36,7 @@ RSpec.describe '作品投稿', type: :system do
       # トップページに移動する
       visit root_path
       # トップページに投稿内容が存在する（画像）
-      expect(page).to have_selector('img')
+      expect(page).to have_selector("img[src$='test_image.png']")
       # トップページに投稿内容が存在する（タイトル）
       expect(page).to have_content(@work.title)
     end
@@ -132,6 +132,79 @@ RSpec.describe '作品編集', type: :system do
       visit work_path(@work2)
       # work2に「編集」ボタンがないことを確認する
       expect(page).to have_no_link '編集する', href: edit_work_path(@work2)
+    end
+  end
+end
+
+RSpec.describe '作品削除', type: :system do
+  before do
+    @work1 = FactoryBot.create(:work)
+    @work2 = FactoryBot.create(:work)
+  end
+
+  context '作品削除ができるとき' do
+    it 'ログインしているユーザーは自分が投稿した作品の削除ができる' do
+      # work1を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'Email',    with: @work1.user.email
+      fill_in 'Password', with: @work1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # work1の画像が詳細ページへ遷移するボタンであることを確認する
+      expect(page).to have_link href: work_path(@work1)
+      # 詳細ページにへ移動する
+      visit work_path(@work1)
+      # work1に「削除」ボタンがあることを確認する
+      expect(page).to have_link '削除する', href: work_path(@work1)
+      # 投稿を削除するとレコードの数が1減ることを確認する
+      expect{
+        find_link('削除する', href: work_path(@work1)).click
+      }.to change { Work.count }.by(-1)
+      # 削除完了画面に遷移したことを確認する
+      expect(current_path).to eq(work_path(@work1))
+      # 「削除が完了しました」の文字があることを確認する
+      expect(page).to have_content('削除が完了しました')
+      # トップページに遷移する
+      visit root_path
+      # トップページにはwork1の内容が存在しないことを確認する（画像）
+      expect(page).to have_no_selector(".img")
+      # トップページにはwork1の内容が存在しないことを確認する（タイトル）
+      expect(page).to have_no_content("#{@work1.title}")
+    end
+  end
+
+  context '作品削除ができないとき' do
+    it 'ログインしているユーザーは自分以外の人が投稿した作品の削除はできない' do
+      # work1を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'Email',    with: @work1.user.email
+      fill_in 'Password', with: @work1.user.password
+      find('input[name="commit"]').click
+      expect(current_path).to eq(root_path)
+      # work2の画像が詳細ページへ遷移するボタンであることを確認する
+      expect(page).to have_link href: work_path(@work2)
+      # 詳細ページに移動する
+      visit work_path(@work2)
+      # ツイート2に「削除」ボタンが無いことを確認する
+      expect(page).to have_no_link '削除する', href: work_path(@work2)
+    end
+    it 'ログインしていないと作品の削除ボタンが表示されない' do
+      # トップページに移動する
+      visit root_path
+      # work1の画像が詳細ページへ遷移するボタンであることを確認する
+      expect(page).to have_link href: work_path(@work1)
+      # 詳細ページにへ移動する
+      visit work_path(@work1)
+      # work1に「削除」ボタンがないことを確認する
+      expect(page).to have_no_link '削除する', href: work_path(@work1)
+      # トップページに移動する
+      visit root_path
+      # work2の画像が詳細ページへ遷移するボタンであることを確認する
+      expect(page).to have_link href: work_path(@work2)
+      # 詳細ページに移動する
+      visit work_path(@work2)
+      # work2に「削除」ボタンがないことを確認する
+      expect(page).to have_no_link '削除する', href: work_path(@work2)
     end
   end
 end
