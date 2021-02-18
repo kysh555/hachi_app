@@ -1,6 +1,19 @@
 <div>
   <div class="user_page_title">
-    <%= "#{@nickname}さんの投稿一覧"%>
+    <% if @user == current_user %>
+      <div id="mypage">
+        マイページ
+        <ul class="mypage_menus">
+          <li class="mypage_menu"><%= link_to '登録内容編集', edit_user_registration_path, class: "mypage_menu" %></li>
+          <li class="mypage_menu"><%= link_to '退会', user_registration_path, method: :delete, class: "mypage_menu" %></li>
+        </ul>
+      </div>
+      <div>
+        <%= "自分の投稿一覧" %>
+      </div>
+    <% else %>
+      <%= "#{@nickname}さんの投稿一覧"%>
+    <% end %>
   </div>
   <div class="show_user_message">
     （クリックで詳細ページにとびます）

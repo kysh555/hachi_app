@@ -1,7 +1,7 @@
 class Work < ApplicationRecord
   has_many_attached :images
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   with_options presence: true do
     validates :title
