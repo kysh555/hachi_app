@@ -6,18 +6,18 @@
 <% end %>
 
 <div class="work-field">
-  <div class="work-image">
+  <div class="show-work-images">
     <% @work.images.each do |work| %>
       <li class="show_work_image">
         <%=image_tag work, height:"400px" %>
       </li>
     <% end %>
   </div>
-  <div class="work-info">
-    <div class="work-title">
+  <div class="show-work-info">
+    <div class="show-work-title">
       <%= @work.title %>
     </div>
-    <div class="work-description">
+    <div class="show-work-description">
       <%= @work.description %>
     </div>
     <div class="who-posted">
@@ -53,4 +53,4 @@
   </div>
 </div>
 
-<%= link_to "←トップへ戻る", root_path, class: "return_to_index" %>
+<%= link_to "← トップへ戻る", root_path, class: "return_to" %>

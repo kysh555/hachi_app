@@ -1,21 +1,24 @@
-<h1>ユーザーページ</h1>
-
 <div>
-  <div>
+  <div class="user_page_title">
     <%= "#{@nickname}さんの投稿一覧"%>
   </div>
+  <div class="show_user_message">
+    （クリックで詳細ページにとびます）
+    </div>
 
   <div>
+  <ul class="show_user_works">
     <% @works.each do |work| %>
       <% if work.images != 1 %>
         <% work.images.each do |w| %>
-          <%= link_to image_tag(w, height:"250px"), work_path(w.record_id) %>
+          <li><%= link_to image_tag(w, height:"250px"), work_path(w.record_id), class: "work_image" %></li>
         <% end %>
       <% else %>
-          <%= link_to image_tag(work.images, height:"250px"), work_path(work.id) %>
+          <li><%= link_to image_tag(work.images, height:"250px"), work_path(work.id), class: "work_image" %></li>
       <% end %>
     <% end %>
   </div>
+  </ul>
 </div>
 
-<%= link_to '戻る', root_path %>
+<%= link_to '← トップへ戻る', root_path, class: "return_to" %>
