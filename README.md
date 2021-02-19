@@ -21,8 +21,12 @@
 
 [デプロイ先](https://hachi-app.herokuapp.com/)
 <br><br>
-テストアカウント<br>
+テストアカウント1<br>
 EMAIL：test1@test<br>
+PASS：123456<br>
+<br>
+テストアカウント2<br>
+EMAIL：test2@test<br>
 PASS：123456<br>
 <br>
 
