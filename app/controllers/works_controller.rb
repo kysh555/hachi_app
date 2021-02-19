@@ -11,11 +11,9 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(work_params)
-    if @work.save
-      redirect_to root_path
-    else
-      render action: :index
+    @work = Work.create(work_params)
+    unless @work.save
+      render :new
     end
   end
 
