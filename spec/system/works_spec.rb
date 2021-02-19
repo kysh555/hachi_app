@@ -9,11 +9,7 @@ RSpec.describe '作品投稿', type: :system do
   context '新規投稿ができるとき' do
     it 'ログインしているユーザーは新規投稿ができる' do
       # ログインする
-      visit new_user_session_path
-      fill_in 'Email',    with: @user.email
-      fill_in 'Password', with: @user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@user)
       # トップページに移動する
       visit root_path
       # トップページに新規投稿ページへ遷移するボタンが存在する
@@ -52,6 +48,42 @@ RSpec.describe '作品投稿', type: :system do
   end
 end
 
+RSpec.describe '作品詳細表示', type: :system do
+  before do
+    @work = FactoryBot.create(:work)
+  end
+
+  it 'ログインしているユーザーは作品詳細ページに移動するとコメント投稿フォームが表示される' do
+    # ログインする
+    sign_in(@work.user)
+    # 作品の画像が詳細ページ遷移するボタンであることを確認する
+    expect(page).to have_link href: work_path(@work)
+    # 詳細ページへ移動する
+    visit work_path(@work)
+    # 詳細ページに作品の内容が含まれている
+    expect(page).to have_selector 'img'
+    expect(page).to have_content("#{@work.title}")
+    expect(page).to have_content("#{@work.description}")
+    # コメント投稿フォームが存在することを確認する
+    expect(page).to have_selector 'form'
+  end
+
+  it 'ログアウト状態のユーザーは作品詳細ページに移動するとコメント投稿フォームが表示されない' do
+    # トップページに移動する
+    visit root_path
+    # 作品の画像が詳細ページ遷移するボタンであることを確認する
+    expect(page).to have_link href: work_path(@work)
+    # 詳細ページへ移動する
+    visit work_path(@work)
+    # 詳細ページに作品の内容が含まれている
+    expect(page).to have_selector 'img'
+    expect(page).to have_content("#{@work.title}")
+    expect(page).to have_content("#{@work.description}")
+    # コメント投稿フォームが存在しないことを確認する
+    expect(page).to have_no_selector 'form'
+  end
+end
+
 RSpec.describe '作品編集', type: :system do
   before do
     @work1 = FactoryBot.create(:work)
@@ -61,11 +93,7 @@ RSpec.describe '作品編集', type: :system do
   context '作品編集ができるとき' do
     it 'ログインしているユーザーは自分が投稿したツイートの編集ができる' do
       # work1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'Email',    with: @work1.user.email
-      fill_in 'Password', with: @work1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@work1.user)
       # work1の画像が詳細ページへ遷移するボタンであることを確認する
       expect(page).to have_link href: work_path(@work1)
       # 詳細ページにへ移動する
@@ -103,11 +131,7 @@ RSpec.describe '作品編集', type: :system do
   context '作品編集ができないとき' do
     it 'ログインしたユーザーは自分以外が投稿した作品の編集画面には遷移できない' do
       # work1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'Email',    with: @work1.user.email
-      fill_in 'Password', with: @work1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@work1.user)
       # work2の画像が詳細ページへ遷移するボタンであることを確認する
       expect(page).to have_link href: work_path(@work2)
       # 詳細ページに移動する
@@ -145,11 +169,7 @@ RSpec.describe '作品削除', type: :system do
   context '作品削除ができるとき' do
     it 'ログインしているユーザーは自分が投稿した作品の削除ができる' do
       # work1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'Email',    with: @work1.user.email
-      fill_in 'Password', with: @work1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@work1.user)
       # work1の画像が詳細ページへ遷移するボタンであることを確認する
       expect(page).to have_link href: work_path(@work1)
       # 詳細ページにへ移動する
@@ -176,11 +196,7 @@ RSpec.describe '作品削除', type: :system do
   context '作品削除ができないとき' do
     it 'ログインしているユーザーは自分以外の人が投稿した作品の削除はできない' do
       # work1を投稿したユーザーでログインする
-      visit new_user_session_path
-      fill_in 'Email',    with: @work1.user.email
-      fill_in 'Password', with: @work1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@work1.user)
       # work2の画像が詳細ページへ遷移するボタンであることを確認する
       expect(page).to have_link href: work_path(@work2)
       # 詳細ページに移動する
@@ -208,3 +224,9 @@ RSpec.describe '作品削除', type: :system do
     end
   end
 end
+
+RSpec.describe '作品削除', type: :system do
+  before do
+    @work1 = FactoryBot.create(:work)
+    @work2 = FactoryBot.create(:work)
+  end
