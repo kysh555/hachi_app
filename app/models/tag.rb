@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
-  has_many :work_tags
-  has_many :works, through: :work_tags
+  has_many :work_tag_relations, dependent: :destroy
+  has_many :works, through: :work_tag_relations
 
-  validates :name, presence: true
+  validates :tag_name, uniqueness: true
 end
