@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 2021_02_27_052701) do
     t.index ["work_id"], name: "index_work_tag_relations_on_work_id"
   end
 
+  create_table "work_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "work_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_work_tags_on_tag_id"
+    t.index ["work_id"], name: "index_work_tags_on_work_id"
+  end
+
   create_table "works", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
