@@ -1,3 +1,8 @@
-<h1>編集ページ</h1>
+<div class="edit-post-title">
+  投稿内容編集
+</div>
+<div class="edit-post-form">
+  <%= render partial: "form", locals: {work: @work} %>
+</div>
 
-<%= render partial: "form", locals: {work: @work} %>
+<%= link_to '← 作品詳細へ戻る', work_path(@work.id), class: "return_to" %>

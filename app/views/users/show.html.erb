@@ -1,21 +1,37 @@
-<h1>ユーザーページ</h1>
-
 <div>
-  <div>
-    <%= "#{@nickname}さんの投稿一覧"%>
+  <div class="user_page_title">
+    <% if @user == current_user %>
+      <div id="mypage">
+        マイページ
+        <ul class="mypage_menus">
+          <li class="mypage_menu"><%= link_to '登録内容編集', edit_user_registration_path, class: "mypage_menu" %></li>
+          <li class="mypage_menu"><%= link_to '退会', user_registration_path, method: :delete, class: "mypage_menu" %></li>
+        </ul>
+      </div>
+      <div>
+        <%= "自分の投稿一覧" %>
+      </div>
+    <% else %>
+      <%= "#{@nickname}さんの投稿一覧"%>
+    <% end %>
   </div>
+  <div class="show_user_message">
+    （クリックで詳細ページにとびます）
+    </div>
 
   <div>
+  <ul class="show_user_works">
     <% @works.each do |work| %>
       <% if work.images != 1 %>
         <% work.images.each do |w| %>
-          <%= link_to image_tag(w, height:"250px"), work_path(w.record_id) %>
+          <li><%= link_to image_tag(w, height:"250px"), work_path(w.record_id), class: "work_image" %></li>
         <% end %>
       <% else %>
-          <%= link_to image_tag(work.images, height:"250px"), work_path(work.id) %>
+          <li><%= link_to image_tag(work.images, height:"250px"), work_path(work.id), class: "work_image" %></li>
       <% end %>
     <% end %>
   </div>
+  </ul>
 </div>
 
-<%= link_to '戻る', root_path %>
+<%= link_to '← トップへ戻る', root_path, class: "return_to" %>

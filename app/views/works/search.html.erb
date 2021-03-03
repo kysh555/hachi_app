@@ -1,14 +1,7 @@
-<div class="works">
-  <div class="work_table">
-    作品一覧
-  </div>
-  <div class="search_form">
-    <%= form_with(url: search_works_path, local: true, method: :get) do |f| %>
-      <%= f.text_field :keyword, placeholder: 'キーワード検索', class: "search_input" %>
-      <%= f.submit '検索', class: "search_btn" %>
-    <% end %>
-  </div>
-  <<div class="work_lists_field">
+<div class="action-result">
+  検索結果
+</div>
+<div class="work_lists_field">
     <ul class="work_lists">
       <% @works.each do |work| %>
         <li class="work_list">
@@ -24,4 +17,4 @@
       <% end %>
     </ul>
   </div>
-</div>
+<%= link_to '← トップへ戻る', root_path, class: "return_to" %>

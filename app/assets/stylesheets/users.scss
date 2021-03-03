@@ -1,3 +1,29 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com/.
+.user_page_title {
+  margin: 5px 0 5px 5px;
+  color: #333333;
+}
+
+.show_user_message {
+  font-size: 13px;
+  color: darkgrey;
+}
+
+.show_user_works {
+  margin: 5px 0 0 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.work_image {
+  display: block;
+  margin-right: 3px;
+}
+
+.return_to {
+  font-size: 13px;
+  margin-left: 20px;
+  text-decoration: none;
+}
