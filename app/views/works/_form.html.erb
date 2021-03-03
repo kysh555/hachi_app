@@ -1,7 +1,7 @@
-<%= form_with model: work,local: true do |f| %>
+<%= form_with model: work, url: works_path, local: true do |f| %>
   <%= f.file_field :images, multiple: true %><br>
   <%= f.text_field :title, placeholder: 'enter a title' %><br>
   <%= f.text_area :description, placeholder: 'enter a description' %><br>
-  <%= f.text_field :tag, name: 'work[tag][]', placeholder: '登録したいタグを入力してください　例）#◯◯' %><br>
+  <%= f.text_field :tag_name, placeholder: '登録したいタグを入力してください　例）#◯◯' %><br>
   <%= f.submit '投稿する' %>
 <% end %>
