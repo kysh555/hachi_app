@@ -7,13 +7,15 @@ class WorksController < ApplicationController
   end
 
   def new
-    @work = Work.new
+    @work = WorkTag.new
   end
 
   def create
-    @work = Work.create(work_params)
-    unless @work.save
-      render :new
+    @work = WorkTag.new(work_params)
+    if @work.save
+      redirect_to root_path
+    else
+      render action: :index
     end
   end
 
@@ -44,7 +46,7 @@ class WorksController < ApplicationController
 
   private
   def work_params
-    params.require(:work).permit(:title, :description, images: []).merge(user_id: current_user.id)
+    params.require(:work_tag).permit(:title, :description, :tag_name, images: []).merge(user_id: current_user.id)
   end
 
   def find_work

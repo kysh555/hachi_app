@@ -2,12 +2,9 @@ class Work < ApplicationRecord
   has_many_attached :images
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :work_tag_relations, dependent: :destroy
+  has_many :tags, through: :work_tag_relations
 
-  with_options presence: true do
-    validates :title
-    validates :description
-    validates :images
-  end
 
   def self.search(keyword)
     if keyword != ""

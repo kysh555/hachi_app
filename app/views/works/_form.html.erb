@@ -1,21 +1,7 @@
-<div class="work_form">
-  <%= form_with model: work,local: true do |f| %>
-  <%= render partial: 'error_messages', locals: {model: f.object} %>
-    <dl>
-      <%= f.file_field :images, multiple: true, class: "select_images" %>
-      <dt>
-        <%= f.label :タイトルを入力, class: "form_label" %>
-      </dt>
-      <dd>
-        <%= f.text_field :title, placeholder: 'enter a title', class: "title_input" %>
-      </dd>
-      <dt>
-        <%= f.label :説明を入力, class: "form_label" %>
-      </dt>
-      <dd>
-        <%= f.text_area :description, placeholder: 'enter a description', class: "description_input" %>
-      </dd>
-      <%= f.submit '投稿する', class: "send" %>
-    </dl>
-  <% end %>
-</div>
+<%= form_with model: work, url: works_path, local: true do |f| %>
+  <%= f.file_field :images, multiple: true %><br>
+  <%= f.text_field :title, placeholder: 'enter a title' %><br>
+  <%= f.text_area :description, placeholder: 'enter a description' %><br>
+  <%= f.text_field :tag_name, placeholder: '登録したいタグを入力してください　例）#◯◯' %><br>
+  <%= f.submit '投稿する' %>
+<% end %>
