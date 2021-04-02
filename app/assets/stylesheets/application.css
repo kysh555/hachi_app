@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+#wrapper {
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+ }
+
+ .test-accounts{
+  border: 1px solid gray;
+  width: ;
+ }
+
+ .account {
+  display: table;
+  margin: 15px auto;
+  color: gray;
+}
+
+ p {
+   margin: 5px;
+ }
+
+h2 {
+  margin: 25px ;
+}
+
+.field {
+  margin: 20px;
+}
+
+.actions {
+  margin-bottom: 20px;
+}
