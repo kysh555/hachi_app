@@ -20,18 +20,8 @@
   margin: 0 auto;
  }
 
- .test-accounts{
-  border: 1px solid gray;
- }
-
- .account {
-  display: table;
-  margin: 15px auto;
-  color: gray;
-}
-
- p {
-   margin: 5px;
+ .login_btn {
+   margin-bottom: 10px;
  }
 
 h2 {

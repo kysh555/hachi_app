@@ -2,17 +2,8 @@
   <h2>Log in</h2>
 
   <div class="test-accounts">
-    <div class="account">
-      テストアカウント1
-      <p>Email：test1@test</p>
-      <p>Password：123456</p>
-    </div>
-
-    <div class="account">
-      テストアカウント2
-      <p>Email：test2@test</p>
-      <p>Password：123456</p>
-    </div>
+    <input type="submit" value="テストアカウント1としてログイン" class="login_btn"><br>
+    <input type="submit" value="テストアカウント2としてログイン" class="login_btn">
   </div>
 
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
