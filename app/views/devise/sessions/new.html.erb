@@ -1,12 +1,8 @@
 <div id="wrapper">
   <h2>Log in</h2>
 
-  <div class="test-accounts">
-    <input type="submit" value="テストアカウント1としてログイン" class="login_btn"><br>
-    <input type="submit" value="テストアカウント2としてログイン" class="login_btn">
-  </div>
 
-  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+  <%= form_with model: @user, url: user_session_path, id: "form", local: true do |f| %>
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -28,6 +24,11 @@
       <%= f.submit "Log in" %>
     </div>
   <% end %>
+
+  <div class="test-accounts">
+    <input type="submit" value="テストアカウント1としてログイン" class="login_btn" id="login_btn1"><br>
+    <input type="submit" value="テストアカウント2としてログイン" class="login_btn" id="login_btn2">
+  </div>
 
   <%= render "devise/shared/links" %>
 </div>
