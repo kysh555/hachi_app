@@ -21,7 +21,7 @@
  }
 
  .login_btn {
-   margin-bottom: 10px;
+   margin: 10px 0;
  }
 
 h2 {
@@ -34,4 +34,16 @@ h2 {
 
 .actions {
   margin-bottom: 20px;
+}
+
+.test-accounts {
+  margin-bottom: 30px;
+}
+
+#login_btn1,
+#login_btn2 {
+  background-color: #8732ff;
+  color: azure;
+  border: 1px solid #333333;
+  padding: 10px;
 }
