@@ -1,8 +1,7 @@
 # HACHI APP
 
-<br>
+
 [![Image from Gyazo](https://i.gyazo.com/2f889cba5ab3b9b10089038bd15f956b.gif)](https://gyazo.com/2f889cba5ab3b9b10089038bd15f956b)
-<br>
 
 ## About／概要
 
