@@ -6,6 +6,7 @@
 絵を描くことが好きな姉のためのアプリ<br>
 自分の作品を投稿し、他人からコメントをもらえます。
 <br>
+[![Image from Gyazo](https://i.gyazo.com/84ab377ced4122ac4f5a403d56c1f854.jpg)](https://gyazo.com/84ab377ced4122ac4f5a403d56c1f854)
 
 
 ## Description／説明
