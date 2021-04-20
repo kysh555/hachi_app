@@ -2,8 +2,8 @@
   投稿内容編集
 </div>
 <div class="edit-post-form">
-<%= form_with model: @work, url: edit_work_path(@work.id, @tag.id) local: true do |f| %>
-  <%= render 'error_messages', model: f.object
+<%= form_with model: @work_tag, local: true do |f| %>
+  <%= render 'error_messages', model: f.object %>
   <%= f.label :images, '画像を選択してください' %>
   <%= f.file_field :images, multiple: true %><br>
   <%= f.text_field :title, placeholder: 'enter a title' %><br>
