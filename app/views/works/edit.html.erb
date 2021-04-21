@@ -2,13 +2,13 @@
   投稿内容編集
 </div>
 <div class="edit-post-form">
-<%= form_with model: @work_tag, local: true do |f| %>
+<%= form_with model: @work_tag, class: "work_form", local: true do |f| %>
   <%= render 'error_messages', model: f.object %>
-  <%= f.label :images, '画像を選択してください' %>
-  <%= f.file_field :images, multiple: true %><br>
-  <%= f.text_field :title, placeholder: 'enter a title' %><br>
-  <%= f.text_area :description, placeholder: 'enter a description' %><br>
-  <%= f.text_field :tag_name, placeholder: '登録したいタグを入力してください　例）#◯◯' %><br>
+  <%= f.label :images, '画像を選択してください', class: "form_label" %>
+  <%= f.file_field :images, multiple: true, class: "select_images" %><br>
+  <%= f.text_field :title, placeholder: 'タイトルを入力してください', class: "title_input" %><br>
+  <%= f.text_area :description, placeholder: '説明を入力してください', class: "description_input" %><br>
+  <%= f.text_field :tag_name, placeholder: '登録したいタグを入力してください　例）#◯◯', class: "tag_input" %><br>
   <%= f.submit '投稿する' %>
 <% end %>
 </div>
