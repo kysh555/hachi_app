@@ -18,12 +18,21 @@ class WorkTag
   end
   
   def save
-      @work = Work.create(title: title, description: description, images: images, user_id: user_id)
-      @tag = Tag.where(tag_name: tag_name).first_or_initialize
-      @tag.save
-      WorkTagRelation.create(work: work, tag: tag)
+    work = Work.create(title: title, description: description, images: images, user_id: user_id)
+    tag = Tag.find_or_create_by(tag_name: tag_name)
+    WorkTagRelation.create(work: work, tag: tag)
   end
-  
+
+  def update(params)
+    @work = Work.find(params[:work_id])
+    work = @work.update(title: params[:title], description: params[:description], images: params[:images])
+    @tag = @work.tags
+    tag = @tag.find_or_create_by(tag_name: params[:tag_name])
+
+    wtr = WorkTagRelation.where(work_id: work_id)
+    wtr.update(work: work, tag: tag)
+  end
+
   def to_model
     work
   end
@@ -31,7 +40,7 @@ class WorkTag
   private
 
   attr_reader :work, :tag
-    
+
   def default_attributes
     {
       title: work.title,
