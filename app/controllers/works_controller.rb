@@ -27,12 +27,15 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find(params[:id])
-    @tag = @work.tags
+    @work_tag = WorkTag.new(work: @work)
   end
 
   def update
-    @work = Work.find(params[:id])
+    if @work_tag = WorkTag.new.update(work_params)
+      render :edit
+    else
+      redirect_to 
+    end
   end
 
   def destroy
@@ -46,11 +49,12 @@ class WorksController < ApplicationController
 
   private
   def work_params
-    params.require(:work).permit(:title, :description, :tag_name, images: []).merge(user_id: current_user.id)
+    params.require(:work).permit(:title, :description, :tag_name, images: []).merge(user_id: current_user.id, work_id: params[:id])
   end
 
   def find_work
     @work = Work.find(params[:id])
+    @tag = @work.tags
   end
 
   def move_to_index
