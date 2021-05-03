@@ -17,6 +17,11 @@ body {
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+#header-left {
+  display: flex;
 }
 
 .header_title {
@@ -36,6 +41,10 @@ body {
   margin: 15px;
   text-decoration: none;
   font-size: 15px;
+}
+
+#header-right {
+  margin-right: 50px;
 }
 // ヘッダー部分
 
