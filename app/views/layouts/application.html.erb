@@ -11,20 +11,29 @@
 
 <header>
   <div class="header_bar">
-    <div class="header_title">
-      <%= link_to 'Hachi App', root_path, class: "hachiapp" %>
+    <div id="header-left">
+      <div class="header_title">
+        <%= link_to 'Hachi App', root_path, class: "hachiapp" %>
+      </div>
+      <div class="header_menu">
+        <ul class="menu_lists">
+          <% if user_signed_in? %>
+            <li><%= link_to "my page", user_path(current_user.id), class: "menu_list" %></li><span>|</span>
+            <li><%= link_to "sign out", destroy_user_session_path, method: :delete, class: "menu_list" %></li><span>|</span>
+            <li><%= link_to "new post", new_work_path, class:"menu_list" %></li>
+          <% else %>
+            <li><%= link_to "sign up", new_user_registration_path, class:"menu_list" %><br></li><span>|</span>
+            <li><%= link_to "sign in", new_user_session_path, class:"menu_list" %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div class="header_menu">
-      <ul class="menu_lists">
-        <% if user_signed_in? %>
-          <li><%= link_to "my page", user_path(current_user.id), class: "menu_list" %></li><span>|</span>
-          <li><%= link_to "sign out", destroy_user_session_path, method: :delete, class: "menu_list" %></li><span>|</span>
-          <li><%= link_to "new post", new_work_path, class:"menu_list" %></li>
-        <% else %>
-          <li><%= link_to "sign up", new_user_registration_path, class:"menu_list" %><br></li><span>|</span>
-          <li><%= link_to "sign in", new_user_session_path, class:"menu_list" %></li>
-        <% end %>
-      </ul>
+    <div id="header-right">
+      <% if user_signed_in? %>
+        <%= current_user.nickname %> さん
+      <% else %>
+        ゲスト さん
+      <% end %>
     </div>
   </div>
 </header>
