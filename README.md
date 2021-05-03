@@ -20,14 +20,17 @@
 #### 作品新規投稿機能
 
 [![Image from Gyazo](https://i.gyazo.com/221f9bf81e3d3a94afc1ea51837f9b69.gif)](https://gyazo.com/221f9bf81e3d3a94afc1ea51837f9b69)
+<br>
 
 #### 作品詳細表示機能
 
 [![Image from Gyazo](https://i.gyazo.com/24234592a1dca468f3c6021ed10cfbf5.gif)](https://gyazo.com/24234592a1dca468f3c6021ed10cfbf5)
+<br>
 
 #### コメント投稿機能
 
 [![Image from Gyazo](https://i.gyazo.com/baaa0d0949f6468f98e4f7f23ad4fad8.gif)](https://gyazo.com/baaa0d0949f6468f98e4f7f23ad4fad8)
+<br>
 
 
 ## Description／説明
