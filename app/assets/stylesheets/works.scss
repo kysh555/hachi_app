@@ -6,6 +6,15 @@ body {
   width: 100%;
 }
 
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: palevioletred;
+}
+
 // ヘッダー部分
 .hachiapp {
   text-decoration: none;
