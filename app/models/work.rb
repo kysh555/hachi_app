@@ -8,7 +8,7 @@ class Work < ApplicationRecord
 
   def self.search(keyword)
     if keyword != ""
-      Work.where('title LIKE?', "%#{keyword}%").where('description LIKE?', "%#{keyword}%")
+      Work.where('title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%")
     else
       Work.all
     end
