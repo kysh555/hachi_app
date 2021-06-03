@@ -89,7 +89,7 @@ a:hover {
 
 .work_lists {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -141,13 +141,18 @@ a:hover {
 .show-work-images {
   margin: 20px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.show_work_image {
+.show-work-image {
     margin: 0 5px;
   }
+
+.show-work-image > img {
+    margin-top: 20px;
+}
 
 .show-work-info {
   width: 600px;

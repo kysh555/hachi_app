@@ -1,6 +1,7 @@
 <% if user_signed_in? && @work.user == current_user %>
   <div class="work_btn">
     <%= link_to '編集する', edit_work_path(@work.id) %>
+    ｜
     <%= link_to '削除する', work_path(@work.id), method: :delete %>
   </div>
 <% end %>
@@ -8,7 +9,7 @@
 <div class="work-field">
   <div class="show-work-images">
     <% @work.images.each do |work| %>
-      <li class="show_work_image">
+      <li class="show-work-image">
         <%=image_tag work, height:"400px" %>
       </li>
     <% end %>
